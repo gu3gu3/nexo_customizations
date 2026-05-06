@@ -24,6 +24,13 @@ def after_install():
 	clear_caches()
 
 
+
+def after_migrate():
+	ensure_colors()
+	ensure_website_theme()
+	clear_caches()
+
+
 @frappe.whitelist()
 def apply_site_defaults():
 	website_settings = frappe.get_single("Website Settings")

@@ -9,6 +9,7 @@ web_include_css = ["nexo_website.bundle.css"]
 web_include_js = ["nexo_website.bundle.js"]
 
 after_install = "nexo_customizations.install.after_install"
+after_migrate = "nexo_customizations.install.after_migrate"
 get_website_user_home_page = "nexo_customizations.utils.website.get_home_page"
 
 update_website_context = [
@@ -28,9 +29,5 @@ fixtures = [
 	{
 		"dt": "Color",
 		"filters": [["name", "in", ["Nexo Blue", "Nexo Green", "Nexo Ink", "Nexo Mist"]]],
-	},
-	{
-		"dt": "Website Theme",
-		"filters": [["name", "in", ["Nexo SaaS Base"]]],
-	},
+	}
 ]
