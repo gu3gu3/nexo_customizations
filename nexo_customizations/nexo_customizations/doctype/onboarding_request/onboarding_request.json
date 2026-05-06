@@ -1,0 +1,215 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:ONB-{YYYY}-{MM}-{#####}",
+ "creation": "2026-05-06 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "business_section",
+  "business_name",
+  "business_type",
+  "contact_name",
+  "contact_email",
+  "contact_phone",
+  "client_logo",
+  "color_palette",
+  "fiscal_section",
+  "has_ruc",
+  "declares_iva",
+  "fiscal_regime",
+  "dgi_status",
+  "operations_section",
+  "needs_invoicing",
+  "needs_inventory",
+  "needs_payroll",
+  "needs_financial_statements",
+  "monthly_invoices",
+  "user_count",
+  "services_section",
+  "needs_accounting_support",
+  "preferred_go_live_date",
+  "notes",
+  "internal_section",
+  "status",
+  "tenant_slug"
+ ],
+ "fields": [
+  {
+   "fieldname": "business_section",
+   "fieldtype": "Section Break",
+   "label": "Información del Negocio"
+  },
+  {
+   "fieldname": "business_name",
+   "fieldtype": "Data",
+   "label": "Nombre del Negocio",
+   "reqd": 1
+  },
+  {
+   "fieldname": "business_type",
+   "fieldtype": "Data",
+   "label": "Tipo de Negocio",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_name",
+   "fieldtype": "Data",
+   "label": "Nombre de Contacto",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_email",
+   "fieldtype": "Data",
+   "label": "Correo de Contacto",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_phone",
+   "fieldtype": "Data",
+   "label": "Teléfono de Contacto"
+  },
+  {
+   "fieldname": "client_logo",
+   "fieldtype": "Attach Image",
+   "label": "Logo del Negocio"
+  },
+  {
+   "fieldname": "color_palette",
+   "fieldtype": "Select",
+   "label": "Paleta de Colores Preferida",
+   "options": "\nAzul Nexo\nVerde Fresco\nGris Profesional"
+  },
+  {
+   "fieldname": "fiscal_section",
+   "fieldtype": "Section Break",
+   "label": "Información Fiscal"
+  },
+  {
+   "default": "No",
+   "fieldname": "has_ruc",
+   "fieldtype": "Select",
+   "label": "¿Ya tiene RUC?",
+   "options": "Sí\nNo"
+  },
+  {
+   "default": "No",
+   "fieldname": "declares_iva",
+   "fieldtype": "Select",
+   "label": "¿Declara IVA?",
+   "options": "Sí\nNo"
+  },
+  {
+   "fieldname": "fiscal_regime",
+   "fieldtype": "Data",
+   "label": "Régimen Fiscal"
+  },
+  {
+   "fieldname": "dgi_status",
+   "fieldtype": "Select",
+   "label": "Estado con la DGI",
+   "options": "Al día\nAtrasado\nNo estoy seguro"
+  },
+  {
+   "fieldname": "operations_section",
+   "fieldtype": "Section Break",
+   "label": "Necesidades Operativas"
+  },
+  {
+   "fieldname": "needs_invoicing",
+   "fieldtype": "Check",
+   "label": "Necesita Facturación"
+  },
+  {
+   "fieldname": "needs_inventory",
+   "fieldtype": "Check",
+   "label": "Maneja Inventario"
+  },
+  {
+   "fieldname": "needs_payroll",
+   "fieldtype": "Check",
+   "label": "Necesita Nómina"
+  },
+  {
+   "fieldname": "needs_financial_statements",
+   "fieldtype": "Check",
+   "label": "Necesita Estados Financieros"
+  },
+  {
+   "fieldname": "monthly_invoices",
+   "fieldtype": "Select",
+   "label": "Facturas Mensuales Aproximadas",
+   "options": "\n1-50\n51-200\n201-500\n500+"
+  },
+  {
+   "fieldname": "user_count",
+   "fieldtype": "Int",
+   "label": "Cantidad de Usuarios"
+  },
+  {
+   "fieldname": "services_section",
+   "fieldtype": "Section Break",
+   "label": "Servicios Adicionales"
+  },
+  {
+   "fieldname": "needs_accounting_support",
+   "fieldtype": "Check",
+   "label": "Necesita Soporte Contable Mensual"
+  },
+  {
+   "fieldname": "preferred_go_live_date",
+   "fieldtype": "Date",
+   "label": "Fecha Ideal de Salida en Vivo"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notas Adicionales"
+  },
+  {
+   "fieldname": "internal_section",
+   "fieldtype": "Section Break",
+   "label": "Seguimiento Interno"
+  },
+  {
+   "default": "Nuevo",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Estado",
+   "options": "Nuevo\nEn Revisión\nAprobado\nDescartado"
+  },
+  {
+   "fieldname": "tenant_slug",
+   "fieldtype": "Data",
+   "label": "Tenant Slug"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-05-06 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Nexo Customizations",
+ "name": "Onboarding Request",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "write": 1,
+   "role": "System Manager"
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Guest"
+  }
+ ],
+ "search_fields": "business_name,contact_name,contact_email,status",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "business_name",
+ "track_changes": 1
+}

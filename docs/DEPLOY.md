@@ -1,41 +1,36 @@
 # Deploy de nexo_customizations a producción
 
-## 1. Prerrequisitos
-- Bench productivo con Frappe/ERPNext v15
-- Acceso SSH al servidor
-- Git instalado
-- Repo accesible desde el servidor
-
-## 2. Obtener la app
+## 1. Obtener la app
 ```bash
 cd /home/frappe/frappe-bench
 bench get-app https://github.com/gu3gu3/nexo_customizations.git
 ```
 
-Si ya existe:
+Si la carpeta ya existe, no la sobreescribas sin revisar. Mejor:
 ```bash
 cd /home/frappe/frappe-bench/apps/nexo_customizations
-git pull origin main
+git status
+git remote -v
 ```
 
-## 3. Instalar dependencias Python de la app
+## 2. Instalar dependencias Python de la app
 ```bash
 cd /home/frappe/frappe-bench
 bench pip install -e apps/nexo_customizations
 ```
 
-## 4. Instalar en el site
+## 3. Instalar en el site
 ```bash
 bench --site TU_SITE install-app nexo_customizations
 ```
 
-## 5. Migrar y compilar assets
+## 4. Migrar y compilar assets
 ```bash
 bench --site TU_SITE migrate
 bench build --app nexo_customizations
 ```
 
-## 6. Aplicar branding y defaults
+## 5. Aplicar branding y defaults
 ```bash
 bench --site TU_SITE execute nexo_customizations.install.ensure_colors
 bench --site TU_SITE execute nexo_customizations.install.ensure_website_theme
@@ -44,33 +39,24 @@ bench --site TU_SITE execute nexo_customizations.install.ensure_tenant_branding_
 bench --site TU_SITE clear-cache
 ```
 
-## 7. Reiniciar servicios
+## 6. Provisionar compañía Nicaragua y POS
+```bash
+bench --site TU_SITE execute nexo_customizations.provisioning.provision_tenant --kwargs company_name:Cliente Demo Corp
+```
+
+## 7. Crear Web Form de onboarding si aplica
+```bash
+bench --site TU_SITE execute nexo_customizations.onboarding.ensure_onboarding_web_form
+```
+
+## 8. Reiniciar servicios
 ```bash
 bench restart
 ```
 
-## 8. Validaciones
+## 9. Validaciones
 Revisar:
 - `https://tu-dominio/`
 - `https://tu-dominio/login`
 - `https://tu-dominio/app`
-
-Validar:
-- nombre NexoERP
-- logo y favicon correctos
-- landing branded
-- login branded
-
-## 9. Nuevos tenants
-Para cada tenant nuevo:
-```bash
-bench --site NUEVO_SITE install-app nexo_customizations
-bench pip install -e apps/nexo_customizations
-bench --site NUEVO_SITE migrate
-bench build --app nexo_customizations
-bench --site NUEVO_SITE execute nexo_customizations.install.ensure_colors
-bench --site NUEVO_SITE execute nexo_customizations.install.ensure_website_theme
-bench --site NUEVO_SITE execute nexo_customizations.install.apply_site_defaults
-bench --site NUEVO_SITE execute nexo_customizations.install.ensure_tenant_branding_defaults
-bench --site NUEVO_SITE clear-cache
-```
+- `https://tu-dominio/solicitud-onboarding` si habilitaste onboarding
