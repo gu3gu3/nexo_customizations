@@ -1,0 +1,16 @@
+<footer class="nexo-footer">
+	<div class="container nexo-footer__inner">
+		<div>
+			<strong>© {{ nexo_branding.company_name }}</strong>
+			<p>{{ nexo_branding.footer_note }}</p>
+		</div>
+
+		<div class="nexo-footer__links">
+			{% for link in nexo_branding.footer_links %}
+				<a href="{{ link.url }}" {% if link.url and link.url.startswith("http") %}target="_blank" rel="noopener"{% endif %}>
+					{{ link.label }}
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+</footer>

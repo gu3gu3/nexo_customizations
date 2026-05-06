@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv/
+node_modules/
+coverage/
+.coverage
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+*.swp
+*.swo
+nexo_customizations/public/dist/

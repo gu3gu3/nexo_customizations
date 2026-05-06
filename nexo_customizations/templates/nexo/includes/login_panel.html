@@ -1,0 +1,94 @@
+<section class="for-login">
+	<div class="login-content page-card nexo-login-card">
+		<div class="nexo-login-card__head">
+			<span class="nexo-chip">Acceso seguro</span>
+			<h3>{{ nexo_branding.login_title }}</h3>
+			<p>{{ nexo_branding.login_subtitle }}</p>
+		</div>
+
+		<form class="form-signin form-login" role="form">
+			<div class="page-card-body">
+				{% if not disable_user_pass_login %}
+				<div class="form-group">
+					<label class="form-label sr-only" for="login_email">{{ login_label or _("Email") }}</label>
+					<input type="text" id="login_email" class="form-control" placeholder="correo@empresa.com" required autofocus autocomplete="username">
+				</div>
+
+				<div class="form-group">
+					<label class="form-label sr-only" for="login_password">{{ _("Password") }}</label>
+					<input type="password" id="login_password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+					<div class="mt-2 d-flex justify-content-between align-items-center">
+						<a href="#forgot" class="nexo-link">{{ _("Forgot Password?") }}</a>
+						<span toggle="#login_password" class="toggle-password text-muted">{{ _("Show") }}</span>
+					</div>
+				</div>
+				{% endif %}
+
+				{% if provider_logins %}
+				<div class="nexo-socials mt-4">
+					<p class="text-muted mb-2">o continúa con</p>
+					{% for provider in provider_logins %}
+					<a href="{{ provider.auth_url }}" class="btn btn-light btn-sm btn-block mb-2">
+						{{ _("Login with {0}").format(provider.provider_name) }}
+					</a>
+					{% endfor %}
+				</div>
+				{% endif %}
+			</div>
+
+			<div class="page-card-actions">
+				{% if not disable_user_pass_login %}
+				<button class="btn btn-primary btn-block btn-login" type="submit">{{ _("Login") }}</button>
+				{% endif %}
+
+				{% if login_with_email_link %}
+				<a href="#login-with-email-link" class="btn btn-light btn-block mt-2">{{ _("Login with Email Link") }}</a>
+				{% endif %}
+			</div>
+		</form>
+	</div>
+</section>
+
+<section class="for-forgot" style="display: none;">
+	<div class="login-content page-card nexo-login-card">
+		<div class="nexo-login-card__head">
+			<h3>{{ _("Forgot Password") }}</h3>
+			<p>{{ _("We will send you reset instructions by email.") }}</p>
+		</div>
+
+		<form class="form-signin form-forgot" role="form">
+			<div class="page-card-body">
+				<input type="email" id="forgot_email" class="form-control" placeholder="{{ _("Email Address") }}" required autocomplete="username">
+			</div>
+			<div class="page-card-actions">
+				<button class="btn btn-primary btn-block btn-forgot" type="submit">{{ _("Reset Password") }}</button>
+				<p class="text-center mt-3 mb-0">
+					<a href="#login" class="nexo-link">{{ _("Back to Login") }}</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</section>
+
+{% if login_with_email_link %}
+<section class="for-login-with-email-link" style="display: none;">
+	<div class="login-content page-card nexo-login-card">
+		<div class="nexo-login-card__head">
+			<h3>{{ _("Login with Email Link") }}</h3>
+			<p>{{ _("Receive a one-time secure access link in your inbox.") }}</p>
+		</div>
+
+		<form class="form-signin form-login-with-email-link" role="form">
+			<div class="page-card-body">
+				<input type="email" id="login_with_email_link_email" class="form-control" placeholder="{{ _("Email Address") }}" required autocomplete="username">
+			</div>
+			<div class="page-card-actions">
+				<button class="btn btn-primary btn-block btn-login-with-email-link" type="submit">{{ _("Send login link") }}</button>
+				<p class="text-center mt-3 mb-0">
+					<a href="#login" class="nexo-link">{{ _("Back to Login") }}</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</section>
+{% endif %}

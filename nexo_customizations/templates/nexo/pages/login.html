@@ -1,0 +1,36 @@
+{% extends "nexo_customizations/templates/nexo/base.html" %}
+
+{% block nexo_page %}
+<section class="nexo-auth-wrap">
+	<div class="nexo-hero__bg"></div>
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 mb-5 mb-lg-0">
+				<div class="nexo-hero__content">
+					<span class="nexo-chip">{{ nexo_branding.hero_kicker }}</span>
+					<h1 class="nexo-hero__title">{{ nexo_branding.portal_name }}</h1>
+					<p class="nexo-hero__subtitle">{{ nexo_branding.hero_subtitle }}</p>
+					<p class="nexo-hero__message">{{ nexo_branding.hero_message }}</p>
+
+					<div class="nexo-highlights">
+						{% for item in nexo_branding.highlights %}
+						<div class="nexo-highlights__item">{{ item }}</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-5 offset-lg-1">
+				<div class="nexo-hero__panel">
+					{% include "nexo_customizations/templates/nexo/includes/login_panel.html" %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
+
+{% block script %}
+	{{ super() }}
+	<script>{% include "templates/includes/login/login.js" %}</script>
+{% endblock %}

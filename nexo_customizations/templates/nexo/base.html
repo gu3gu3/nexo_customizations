@@ -1,0 +1,29 @@
+{% extends "templates/base.html" %}
+
+{% block head_include %}
+	{{ super() }}
+	{% if nexo_branding %}
+	<style>
+		:root {
+			--nexo-primary: {{ nexo_branding.primary_color }};
+			--nexo-secondary: {{ nexo_branding.secondary_color }};
+			--nexo-ink: {{ nexo_branding.ink_color }};
+			--nexo-soft: {{ nexo_branding.soft_color }};
+		}
+	</style>
+	{% endif %}
+{% endblock %}
+
+{% block navbar %}
+	{% include "nexo_customizations/templates/nexo/includes/header.html" %}
+{% endblock %}
+
+{% block content %}
+	<main class="nexo-site-shell">
+		{% block nexo_page %}{% endblock %}
+	</main>
+{% endblock %}
+
+{% block footer %}
+	{% include "nexo_customizations/templates/nexo/includes/footer.html" %}
+{% endblock %}

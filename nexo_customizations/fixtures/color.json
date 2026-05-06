@@ -1,0 +1,30 @@
+[
+ {
+  "color": "#1E5EFF",
+  "docstatus": 0,
+  "doctype": "Color",
+  "modified": "2026-05-05 21:36:23.101383",
+  "name": "Nexo Blue"
+ },
+ {
+  "color": "#19C37D",
+  "docstatus": 0,
+  "doctype": "Color",
+  "modified": "2026-05-05 21:36:23.564148",
+  "name": "Nexo Green"
+ },
+ {
+  "color": "#0F172A",
+  "docstatus": 0,
+  "doctype": "Color",
+  "modified": "2026-05-05 21:36:23.566166",
+  "name": "Nexo Ink"
+ },
+ {
+  "color": "#F7FAFC",
+  "docstatus": 0,
+  "doctype": "Color",
+  "modified": "2026-05-05 21:36:23.578600",
+  "name": "Nexo Mist"
+ }
+]

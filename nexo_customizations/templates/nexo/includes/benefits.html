@@ -1,0 +1,14 @@
+<div class="nexo-benefits">
+	<div class="container">
+		<div class="row">
+			{% for item in nexo_branding.benefits %}
+			<div class="col-md-4 mb-4">
+				<div class="nexo-card">
+					<h3>{{ item.title }}</h3>
+					<p>{{ item.description }}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
