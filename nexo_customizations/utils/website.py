@@ -1,4 +1,3 @@
-from frappe.apps import get_default_path
 import frappe
 
 
@@ -13,6 +12,7 @@ def get_home_page(user):
 	return None
 
 
+
 def get_logged_in_redirect():
 	if frappe.session.user == "Guest":
 		return None
@@ -20,4 +20,4 @@ def get_logged_in_redirect():
 	if frappe.session.data.user_type == "Website User":
 		return "/" + get_home_page(frappe.session.user)
 
-	return get_default_path() or "/app"
+	return "/app"

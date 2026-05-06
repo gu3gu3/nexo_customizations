@@ -61,6 +61,12 @@ def _site_cache_key():
 	return f"{CACHE_KEY}:{site}"
 
 
+
+def _get_cache():
+	return frappe.cache() if callable(getattr(frappe, "cache", None)) else frappe.cache
+
+
+
 def _build_whatsapp_url(number, message):
 	digits = "".join(ch for ch in (number or "") if ch.isdigit())
 	if not digits:
@@ -69,6 +75,7 @@ def _build_whatsapp_url(number, message):
 	if message:
 		url += f"?text={quote(message)}"
 	return url
+
 
 
 def _load_tenant_settings():
@@ -94,6 +101,7 @@ def _load_tenant_settings():
 	}
 
 
+
 def get_branding_context():
 	def _build():
 		data = DEFAULTS.copy()
@@ -112,7 +120,8 @@ def get_branding_context():
 	if getattr(frappe.local, "dev_server", False):
 		return _build()
 
-	return frappe.cache.get_value(_site_cache_key(), _build)
+	return _get_cache().get_value(_site_cache_key(), _build)
+
 
 
 def update_website_context(context):
@@ -120,7 +129,8 @@ def update_website_context(context):
 	return context
 
 
+
 def clear_branding_cache(*args, **kwargs):
-	frappe.cache.delete_value(_site_cache_key())
+	_get_cache().delete_value(_site_cache_key())
 	frappe.clear_cache()
 	clear_website_cache()
